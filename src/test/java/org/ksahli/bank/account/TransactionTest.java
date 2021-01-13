@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-public class TestTransaction {
+public class TransactionTest {
 
     @Test
     public void should_apply_deposit_transaction() {

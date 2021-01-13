@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TestAmount {
+public class AmountTest {
 
     @Test
     public void should_sum_up_amounts() {
