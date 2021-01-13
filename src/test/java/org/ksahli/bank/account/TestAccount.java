@@ -37,4 +37,32 @@ public class TestAccount {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    public void should_withdraw_amount() {
+        final var account = new Account();
+        final var withdrawAmount = Amount.of(100);
+        account.withdraw(withdrawAmount);
+        assertThat(account.getBalance()).isEqualTo(Amount.of(-100));
+    }
+
+    @Test
+    public void should_withdraw_multiple_amounts() {
+        final var account = new Account();
+        final var withdrawAmounts = Arrays.asList(
+                Amount.of(100),
+                Amount.of(50),
+                Amount.of(100)
+        );
+        withdrawAmounts.forEach(account::withdraw);
+        assertThat(account.getBalance()).isEqualTo(Amount.of(-250));
+    }
+
+    @Test
+    public void should_not_withdraw_negative_amount() {
+        final var account = new Account();
+        final var negativeWithdrawAmount = Amount.of(-100);
+        assertThatThrownBy(() -> account.withdraw(negativeWithdrawAmount))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }

@@ -15,6 +15,14 @@ public class TestAmount {
     }
 
     @Test
+    public void should_subtract_amounts() {
+        final var thirty = Amount.of(30);
+        final var ten = Amount.of(10);
+        final var difference = thirty.subtract(ten);
+        assertThat(difference).isEqualTo(Amount.of(20));
+    }
+
+    @Test
     public void should_be_negative() {
         final var negativeAmount = Amount.of(-100);
         assertThat(negativeAmount.isNegative()).isTrue();
