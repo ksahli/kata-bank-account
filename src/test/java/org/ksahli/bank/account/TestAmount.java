@@ -23,6 +23,20 @@ public class TestAmount {
     }
 
     @Test
+    public void should_return_negative_value() {
+        final var amount = Amount.of(100);
+        final var negativeAmount = amount.negate();
+        assertThat(negativeAmount).isEqualTo(Amount.of(-100));
+    }
+
+    @Test
+    public void should_return_positive_value() {
+        final var amount = Amount.of(-100);
+        final var positiveAmount = amount.negate();
+        assertThat(positiveAmount).isEqualTo(Amount.of(100));
+    }
+
+    @Test
     public void should_be_negative() {
         final var negativeAmount = Amount.of(-100);
         assertThat(negativeAmount.isNegative()).isTrue();
