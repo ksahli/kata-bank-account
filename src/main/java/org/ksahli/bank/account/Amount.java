@@ -14,10 +14,6 @@ public class Amount {
 
     BigDecimal value;
 
-    public Amount(BigDecimal value) {
-        this.value = value;
-    }
-
     public Amount add(Amount amount) {
         final var valueToAdd = valueOrZero(amount);
         final var value = this.value.add(valueToAdd);
@@ -27,6 +23,11 @@ public class Amount {
     public Amount subtract(Amount amount) {
         final var valueToSubtract = valueOrZero(amount);
         final var value = this.value.subtract(valueToSubtract);
+        return new Amount(value);
+    }
+
+    public Amount negate() {
+        final BigDecimal value = this.value.negate();
         return new Amount(value);
     }
 
